@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI E-commerce Agent Frontend</title>
+  <link rel="stylesheet" href="/frontend/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>🛍️ Shop AI</h1>
+      <p>NLP search + catalog + cart in one place.</p>
+    </header>
+
+    <nav class="top-tabs">
+      <button class="tab-btn active" data-tab="smart">Smart Search</button>
+      <button class="tab-btn" data-tab="catalog">Catalog</button>
+      <button class="tab-btn" data-tab="add">Add Product</button>
+      <button class="tab-btn" data-tab="cart">Cart</button>
+    </nav>
+
+    <main>
+      <section id="tab-smart" class="panel active">
+        <h2>Smart NLP Search</h2>
+        <p class="hint">Ask naturally: “gluten-free bread under 200”</p>
+        <form id="nlp-form" class="stack">
+          <input id="nlp-query" type="text" required placeholder="Type your shopping need..." />
+          <div class="actions">
+            <button type="submit">Search</button>
+          </div>
+        </form>
+
+        <div class="split">
+          <div>
+            <h3>AI Interpretation</h3>
+            <pre id="nlp-output">No query yet.</pre>
+            <h3>Assistant Reply</h3>
+            <div id="conversation-output" class="chat-box">No response yet.</div>
+          </div>
+          <div>
+            <h3>Recommendations (one by one)</h3>
+            <div id="nlp-results" class="cards"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-catalog" class="panel">
+        <h2>Catalog</h2>
+        <div class="actions">
+          <input id="catalog-search" placeholder="Filter by product name or description" />
+          <button id="refresh-products" class="ghost" type="button">Refresh</button>
+        </div>
+        <p id="catalog-count" class="hint"></p>
+        <div id="product-list" class="cards"></div>
+      </section>
+
+      <section id="tab-add" class="panel">
+        <h2>Add Product</h2>
+        <form id="add-form" class="stack narrow">
+          <label>Name</label>
+          <input id="name" required placeholder="Product name" />
+
+          <label>Description</label>
+          <textarea id="description" rows="4" required placeholder="Product description"></textarea>
+
+          <label>Price</label>
+          <input id="price" type="number" step="0.01" min="0.01" required placeholder="0.00" />
+
+          <button type="submit">Save Product</button>
+          <p id="add-status" class="hint"></p>
+        </form>
+      </section>
+
+      <section id="tab-cart" class="panel">
+        <h2>Your Cart</h2>
+        <p id="cart-count" class="hint">0 items</p>
+        <div id="cart-list" class="cards"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="toast"></dialog>
+  <script src="/frontend/app.js" defer></script>
+</body>
+</html>
